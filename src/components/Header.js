@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const Container = styled.header`
     background-color: #333;
     color: #fff;
-    padding: 20px;
+    padding: 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,7 +17,7 @@ const Container = styled.header`
 `;
 
 const Logo = styled.div`
-    font-size: 24px;
+    font-size: 32px;
     font-family: 'Josefin Sans', sans-serif; /* Change font family */
 `;
 
@@ -31,6 +31,7 @@ const Nav = styled.nav`
 
     li {
         margin-right: 50px;
+        font-size: 20px;
     }
 
     a {

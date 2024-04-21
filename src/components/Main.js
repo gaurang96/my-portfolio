@@ -2,6 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+// import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { Button, CardActionArea, CardActions } from '@mui/material';
+import { Card } from "flowbite-react";
 
 const Container = styled.main`
     padding: 20px;
@@ -67,7 +73,7 @@ const RoleText = styled.span`
 `;
 
 const Description = styled.p`
-    font-size: 22px;
+    font-size: 25px;
     margin-bottom: 20px;
     font-family: 'Josefin Sans', sans-serif; /* Change font family */
     text-align: left; /* Align text to the left */
@@ -80,7 +86,7 @@ const SocialContainer = styled.div`
 
 const SocialLink = styled.a`
     text-decoration: none;
-
+    
 `;
 
 const SocialIcon = styled.i`
@@ -111,9 +117,9 @@ const ImageContainer = styled.div`
 `;
 
 const Picture = styled.img`
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
+    width: 400px;
+    height: 400px;
+    border-radius: 70%;
 `;
 
 const ContactContainer = styled.div`
@@ -299,8 +305,8 @@ const ProjectsContainer = styled.div`
 const ProjectCard = styled.div`
     display: inline-block;
     margin: 10px;
-    padding: 20px;
-    border: 2px solid #6499E9; /* Bold borders */
+    padding: 90px;
+    border: 3px solid #6499E9; /* Bold borders */
     border-radius: 5px;
     cursor: pointer;
     position: relative;
@@ -332,6 +338,48 @@ const ProjectCard = styled.div`
     &:hover::after {
         opacity: 1;
     }
+`;
+const BlogsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+  padding: 50px;
+`;
+
+const BlogCard = styled.div`
+  width: 350px; /* Adjust the width as needed */
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+  }
+`;
+
+
+const BlogImage = styled.img`
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+`;
+
+const BlogContent = styled.div`
+  padding: 15px;
+
+`;
+
+const WritingHeading = styled.h2`
+  font-family: 'Josefin Sans', sans-serif;
+  color: #F9F7F7;
+  font-size: 50px;
+  text-decoration: underline;
 `;
 
 
@@ -366,7 +414,18 @@ const projects = [
         description: 'Detailed description of project 2 goes here.',
         skills: ['Python', 'TensorFlow', 'Flask']
     },
-    // Add more projects as needed
+    {
+        title: 'Project 3',
+        summary: 'Nulla facilisi. Proin vel sollicitudin ipsum. Vivamus fermentum.',
+        description: 'Detailed description of project 2 goes here.',
+        skills: ['Python', 'TensorFlow', 'Flask']
+    },
+    {
+        title: 'Project 4',
+        summary: 'Nulla facilisi. Proin vel sollicitudin ipsum. Vivamus fermentum.',
+        description: 'Detailed description of project 2 goes here.',
+        skills: ['Python', 'TensorFlow', 'Flask']
+    }
 ];
 
 const Home = ({ roleText }) => (
@@ -381,7 +440,7 @@ const Home = ({ roleText }) => (
                 </Description>
                 <SocialContainer>
                     <SocialLink href="https://www.facebook.com/gaurang.sharma.3950/"><SocialIcon className="fab fa-facebook"></SocialIcon></SocialLink>
-                    <SocialLink href="https://twitter.com/gaurangsharma56"><SocialIcon className="fab fa-twitter"></SocialIcon></SocialLink>
+                    <SocialLink href="https://twitter.com/gaurangsharma56"><SocialIcon className="fa-brands fa-x-twitter"></SocialIcon></SocialLink>
                     <SocialLink href="https://www.instagram.com/sharma_gaurang96/"><SocialIcon className="fab fa-instagram"></SocialIcon></SocialLink>
                     <SocialLink href="https://www.linkedin.com/in/gaurang-sharma-59ba33118/"><SocialIcon className="fab fa-linkedin"></SocialIcon></SocialLink>
                     {/* Add more social media icons as needed */}
@@ -389,7 +448,7 @@ const Home = ({ roleText }) => (
                 <DownloadButton>Download CV</DownloadButton>
             </TextContainer>
             <ImageContainer>
-                <Picture src="images/your-picture.png" alt="Your Picture" />
+                <Picture src="https://media.licdn.com/dms/image/C5603AQFtCLORSgLZfQ/profile-displayphoto-shrink_800_800/0/1650740082305?e=1719446400&v=beta&t=VLBap-yNNUDC9erIujLRktWWmc7leZ9jiRTKnR1I484" alt="Your Picture" />
             </ImageContainer>
         </ContentContainer>
     </Section>
@@ -443,11 +502,60 @@ const Projects = () => {
 };
 
 
-const Blog = () => (
-    <Section id="blog">
-        {/* Blog section content */}
-    </Section>
-);
+const Blog = () => {
+    const blogs = [
+      {
+        coverImg:
+          "https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80",
+        title: "Boost your conversation Rate",
+        authorImg:
+          "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=570&q=80",
+        authorName: "Michale Foster",
+        publishedDate: new Date().toDateString(),
+        url: "https://blog.hubspot.com/marketing/how-to-increase-conversion-rate"
+      },
+      {
+        coverImg:
+          "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80",
+        title: "33 Powerful Self-Reflection Questions for Personal Growth",
+        authorImg:
+          "https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80",
+        authorName: "Tom Wick",
+        publishedDate: new Date().toDateString(),
+      },
+      {
+        coverImg:
+          "https://images.unsplash.com/photo-1564540574859-0dfb63985953?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80",
+        title: "Digital Detox: Reclaiming Your Focus and Creativity in a Distracted World.",
+        authorImg:
+          "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
+        authorName: "Karl Magnuson",
+        publishedDate: new Date().toDateString(),
+      },
+    ];
+  
+    const handleClick = (url) => {
+        window.open(url, '_blank');
+      };
+    
+      return (
+        <>
+          <WritingHeading id="blog">Writings</WritingHeading>
+          <BlogsContainer>
+            {blogs.map((blog, index) => (
+              <BlogCard key={index} onClick={() => handleClick(blog.url)}>
+                <BlogImage src={blog.coverImg} alt="Blog Cover" />
+                <BlogContent>
+                  <h3>{blog.title}</h3>
+                  <p>{blog.authorName}</p>
+                  <p>{blog.publishedDate}</p>
+                </BlogContent>
+              </BlogCard>
+            ))}
+          </BlogsContainer>
+        </>
+      );
+  };
 
 
 const Contact = () => {
@@ -475,7 +583,7 @@ const Contact = () => {
                     <ContentContainer1>
                         <BoldText>Wanna Talk? Let's Get in Touch!</BoldText>
                         <Text>Send me an email on <EmailLink href="mailto:gaurangsharma56@gmail.com">gaurangsharma56@gmail.com</EmailLink></Text>
-                        <Text>Connect with me on LinkedIn <LinkedinLink href="https://www.linkedin.com/">LinkedIn</LinkedinLink></Text>
+                        <Text>Connect with me on <LinkedinLink href="https://www.linkedin.com/">LinkedIn</LinkedinLink></Text>
                         <Text>In Melbourne? Let's catch up for coffee</Text>
                     </ContentContainer1>
                 </ContactContainer>
